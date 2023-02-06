@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { User } from "../models/User";
-import { CreateUserDto } from "../dtos/createUserDto.dto";
+import { CreateUserRequestDto } from "../dtos/createUserRequestDto.dto";
 
 export const usersApi = createApi({
     reducerPath: "usersApi",
@@ -8,11 +8,11 @@ export const usersApi = createApi({
         baseUrl: '/users'
     }),
     endpoints: (build) => ({
-        createUser: build.mutation<User, CreateUserDto>({
-            query: (createUserDto) => ({
+        createUser: build.mutation<User, CreateUserRequestDto>({
+            query: (createUserRequestDto) => ({
                 url: '/',
                 method: 'POST',
-                body: createUserDto,
+                body: createUserRequestDto,
             }),
         }),
     }),
