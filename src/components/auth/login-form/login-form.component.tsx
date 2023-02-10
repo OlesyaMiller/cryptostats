@@ -1,6 +1,10 @@
 import { Button, TextField, Link as MuiLink } from '@mui/material';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useLoginMutation } from '../../../apis/auth.api';
+import { User } from '../../../models/User';
+import { useAppDispatch } from '../../../app/hooks';
+import { setAuthState } from '../../../slices/auth.slice';
 
 const LoginForm: React.FC = () => {
     const [email, setEmail] = useState("");
@@ -8,8 +12,11 @@ const LoginForm: React.FC = () => {
 
     const [password, setPassword] = useState("");
     const [passwordErrored, setPasswordErrored] = useState(false);
+    const [login] = useLoginMutation();
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         if(!email) {
             setEmailErrored(true)
         } else {
@@ -20,7 +27,14 @@ const LoginForm: React.FC = () => {
         } else {
             setPasswordErrored(true)
         }
-    }
+        try{
+            const response = (await login({email, password})) as {data: User};
+            dispatch(setAuthState({user: response.data}));
+            navigate("/")
+        } catch (error) {
+            console.error(error)
+        }  
+    };
     
     return (
         <div className="flex justify-center items-center flex-col h-screen gap-8">
@@ -58,3 +72,4 @@ const LoginForm: React.FC = () => {
 }
 
 export { LoginForm };
+
