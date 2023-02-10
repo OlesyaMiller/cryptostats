@@ -1,7 +1,11 @@
 import { Button, TextField, Link as MuiLink } from '@mui/material';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserMutation } from '../../../apis/users.api';
+import { useLoginMutation } from '../../../apis/auth.api';
+import { useAppDispatch } from '../../../app/hooks';
+import { User } from '../../../models/User';
+import { setAuthState } from '../../../slices/auth.slice';
 
 const SignupForm: React.FC = () => {
     const [email, setEmail] = useState("");
@@ -11,6 +15,9 @@ const SignupForm: React.FC = () => {
     const [passwordErrored, setPasswordErrored] = useState(false);
 
     const [createUser] = useCreateUserMutation(); // destructured, this function is exposed at the endpointf in users.api.ts
+    const [login] = useLoginMutation();
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch(); 
 
     const handleSignup = async () => {
         if(!email) {
@@ -23,7 +30,14 @@ const SignupForm: React.FC = () => {
         } else {
             setPasswordErrored(true)
         }
-        await createUser({email, password});
+        try {
+            await createUser({ email, password });
+            const response = (await login({ email, password })) as { data: User };
+            dispatch(setAuthState({ user: response.data }));
+            navigate("/");
+        } catch(error) {
+            console.log(error);
+        }
     }
 
     return (
