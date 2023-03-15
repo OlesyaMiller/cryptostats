@@ -7,14 +7,14 @@ import { useAppDispatch } from '../../../app/hooks';
 import { User } from '../../../models/User';
 import { setAuthState } from '../../../slices/auth.slice';
 
-const SignupForm: React.FC = () => {
+const SignupForm: React.FC = () => { // FC - function comp, it provides typechecking and autocomplete 
     const [email, setEmail] = useState("");
     const [emailErrored, setEmailErrored] = useState(false);
 
     const [password, setPassword] = useState("");
     const [passwordErrored, setPasswordErrored] = useState(false);
 
-    const [createUser] = useCreateUserMutation(); // destructured, this function is exposed at the endpointf in users.api.ts
+    const [createUser] = useCreateUserMutation(); // destructured, this function is exposed at the endpoint in users.api.ts
     const [login] = useLoginMutation();
     const navigate = useNavigate();
     const dispatch = useAppDispatch(); 

@@ -6,7 +6,7 @@ import { User } from '../../../models/User';
 import { useAppDispatch } from '../../../app/hooks';
 import { setAuthState } from '../../../slices/auth.slice';
 
-const LoginForm: React.FC = () => {
+const LoginForm: React.FC = () => { // FC - function comp, it provides typechecking and autocomplete 
     const [email, setEmail] = useState("");
     const [emailErrored, setEmailErrored] = useState(false);
 
@@ -27,6 +27,7 @@ const LoginForm: React.FC = () => {
         } else {
             setPasswordErrored(true)
         }
+        
         try{
             const response = (await login({email, password})) as {data: User};
             dispatch(setAuthState({user: response.data}));
