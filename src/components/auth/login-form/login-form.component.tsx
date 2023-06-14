@@ -1,31 +1,37 @@
 import { Button, TextField, Link as MuiLink } from '@mui/material';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { useLoginMutation } from '../../../apis/auth.api';
 import { User } from '../../../models/User';
 import { useAppDispatch } from '../../../app/hooks';
 import { setAuthState } from '../../../slices/auth.slice';
 
-const LoginForm: React.FC = () => { // FC - function comp, it provides typechecking and autocomplete 
+const LoginForm: React.FC = () => {         // FC - function comp, it provides typechecking and autocomplete 
     const [email, setEmail] = useState("");
+
     const [emailErrored, setEmailErrored] = useState(false);
 
     const [password, setPassword] = useState("");
+
     const [passwordErrored, setPasswordErrored] = useState(false);
+
     const [login] = useLoginMutation();
+
     const dispatch = useAppDispatch();
+
     const navigate = useNavigate();
 
     const handleLogin = async () => {
         if(!email) {
             setEmailErrored(true)
         } else {
-            setEmailErrored(true)
+            setEmailErrored(false)
         }
         if(!password) {
             setPasswordErrored(true)
         } else {
-            setPasswordErrored(true)
+            setPasswordErrored(false)
         }
         
         try{
