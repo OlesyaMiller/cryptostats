@@ -1,6 +1,7 @@
 import { Button, TextField, Link as MuiLink } from '@mui/material';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { useCreateUserMutation } from '../../../apis/users.api';
 import { useLoginMutation } from '../../../apis/auth.api';
 import { useAppDispatch } from '../../../app/hooks';
@@ -23,12 +24,12 @@ const SignupForm: React.FC = () => { // FC - function comp, it provides typechec
         if(!email) {
             setEmailErrored(true)
         } else {
-            setEmailErrored(true)
+            setEmailErrored(false)
         }
         if(!password) {
             setPasswordErrored(true)
         } else {
-            setPasswordErrored(true)
+            setPasswordErrored(false)
         }
         try {
             await createUser({ email, password });
