@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { User } from "../models/User";
-import { CreateUserRequestDto } from "../dtos/createUserRequestDto.dto";
+import { CreateUserRequestDto } from "../dtos/create-user-request.dto";
 
 export const usersApi = createApi({
     reducerPath: "usersApi",
