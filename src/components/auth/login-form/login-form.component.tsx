@@ -7,7 +7,7 @@ import { User } from '../../../models/User';
 import { useAppDispatch } from '../../../app/hooks';
 import { setAuthState } from '../../../slices/auth.slice';
 
-const LoginForm: React.FC = () => {         // FC - function comp, it provides typechecking and autocomplete 
+const LoginForm: React.FC = () => {         
     const [email, setEmail] = useState("");
 
     const [emailErrored, setEmailErrored] = useState(false);

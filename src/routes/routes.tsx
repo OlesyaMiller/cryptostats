@@ -4,6 +4,7 @@ import { LoginPage } from '../pages/login.page';
 import { SignupPage } from '../pages/signup.page';
 import { HomePage } from '../pages/home.page';
 import { ProtectedRoute } from './protected-route.component';
+import { Transactions } from '../components/transactions/transactions.component';
 
 const Routes: React.FC = () => {
     return (
@@ -15,6 +16,7 @@ const Routes: React.FC = () => {
             } />
             <Route path="login" element={<LoginPage />} />
             <Route path="signup" element={<SignupPage />} />
+            <Route path="transactions" element={<Transactions />} />
         </ReactRouterRoutes>
     )
 }

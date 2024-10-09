@@ -35,7 +35,7 @@ const SignupForm: React.FC = () => { // FC - function comp, it provides typechec
             await createUser({ email, password });
             const response = (await login({ email, password })) as { data: User };
             dispatch(setAuthState({ user: response.data }));
-            navigate("/");
+            navigate("/transactions");
         } catch(error) {
             console.log(error);
         }
