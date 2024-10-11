@@ -39,7 +39,7 @@ const LoginForm: React.FC = () => {
             dispatch(setAuthState({user: response.data}));
             navigate("/")
         } catch (error) {
-            console.error(error)
+            console.error("This is the error: ", error)
         }  
     };
     
