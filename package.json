@@ -4,7 +4,7 @@
   "private": true,
   "proxy": "http://127.0.0.1:3001/",
   "dependencies": {
-    "@craco/craco": "^7.0.0",
+    "@craco/craco": "^5.9.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.3",
@@ -21,7 +21,7 @@
     "react-redux": "^8.0.5",
     "react-router": "^6.6.2",
     "react-router-dom": "^6.6.2",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
   },
@@ -50,8 +50,8 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9",
-    "postcss": "^7",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
 }
