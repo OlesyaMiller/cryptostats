@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import React from "react";
 import { useAppSelector } from "../app/hooks";
-import { TransactionsGrid } from "../components/transactions/transactions-grid.component";
+// import { TransactionsGrid } from "../components/transactions/transactions-grid.component";
 import { selectCurrentUser } from "../slices/auth.slice";
 
 const HomePage: React.FC = () => {
@@ -15,9 +15,9 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center flex-col h-screen">
-      {user?.isCoinbaseAuthorized ? (
+      {/* {user?.isCoinbaseAuthorized ? (
         <TransactionsGrid />
-      ) : (
+      ) : ( */}
         <Button
           variant="contained"
           size="large"
@@ -25,7 +25,7 @@ const HomePage: React.FC = () => {
         >
           Connect Coinbase
         </Button>
-      )}
+      {/* )} */}
     </div>
   );
 };
