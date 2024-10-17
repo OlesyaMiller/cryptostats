@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { LoginRequestDto } from '../dtos/loginRequestDto.dto';
+import { LoginRequest } from '../dtos/login-request.dto';
 import { User } from '../models/User';
 
 export const authApi = createApi({
@@ -8,7 +8,7 @@ export const authApi = createApi({
         baseUrl: '/auth'
     }),
     endpoints: (build) => ({
-        login: build.mutation<User, LoginRequestDto>({
+        login: build.mutation<User, LoginRequest>({
             query: (loginRequestDto) => ({
                 url: '/login',
                 method: 'POST',
