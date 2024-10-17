@@ -1,10 +1,9 @@
-import * as React from 'react';
-import { SignupForm } from '../components/auth/signup-form/signup-form.component';
+import React from "react";
+
+import { SignupForm } from "../components/auth/signup-form/signup-form.component";
 
 const SignupPage: React.FC = () => {
-    return (
-        <SignupForm />
-    )
-}
+  return <SignupForm />;
+};
 
-export { SignupPage }
+export { SignupPage };
